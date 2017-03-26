@@ -25,7 +25,12 @@
     true
     false))
 
-
+(defn should-pack-doll
+  "Returns true if the doll weighs less than the remaining available weight; false otherwise."
+  [remaining-weight doll]
+  (if (<= (:weight doll) remaining-weight)
+    true
+    false))
 
 (defn pack-dolls
   "Find the optimal set of drug-packed porcelain dolls."
@@ -34,15 +39,14 @@
   ;If the total weight of all dolls is less than the max-weight, pack all the dolls.  
   (if (should-pack-all max-weight dolls)
     (println (vec dolls))
-    (do 
-      (let [sorted-dolls (sort value-then-weight-sort dolls)] ;Otherwise, decide which ones to pack.          
+    (do (let [sorted-dolls (sort value-then-weight-sort dolls)] ;Otherwise, decide which ones to pack.          
       (loop [dolls-left sorted-dolls packed []] 
 	(if (empty? dolls-left)
 	  (println packed)
-	  (do (let [weight-left (- max-weight (acc-weights  packed))]
+	  (do (let [weight-left (- max-weight (acc-weights packed))]
 	    ;If the next doll's weight is less than the remaining available weight,
 	    ;add it to the bag. Otherwise, skip to the next doll.
-	    (if (<= (:weight (first dolls-left)) weight-left) 	      
+	    (if (should-pack-doll weight-left (first dolls-left)) 	      
 	      (recur (rest dolls-left) (conj packed (first dolls-left)))
 	      (recur (rest dolls-left) packed))))))))))
 
