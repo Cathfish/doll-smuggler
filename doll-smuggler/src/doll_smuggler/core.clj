@@ -8,18 +8,38 @@
     (< (:weight dollA) (:weight dollB))
     (> (:value dollA) (:value dollB))))
 
+(defn get-weights
+  "Returns a list of the value of each :weight attribute in a collection of dolls."
+  [doll-collection]
+  (map :weight (vec doll-collection)))
+
+(defn acc-weights
+  "Returns the sum of all weights in a collection of dolls"
+  [doll-collection]
+  (reduce + (get-weights doll-collection)))
+
+(defn should-pack-all
+  "Returns true if all the available dolls will fit in the mule's handbag; false otherwise."
+  [max-weight dolls]
+  (if (<= (acc-weights dolls) max-weight)
+    true
+    false))
+
+
+
 (defn pack-dolls
   "Find the optimal set of drug-packed porcelain dolls."
   [max-weight dolls]
 
   ;If the total weight of all dolls is less than the max-weight, pack all the dolls.  
-  (if (<= (reduce + (map :weight (vec dolls))) max-weight)
+  (if (should-pack-all max-weight dolls)
     (println (vec dolls))
-    (do (let [sorted-dolls (sort value-then-weight-sort dolls)] ;Otherwise, decide which ones to pack.          
+    (do 
+      (let [sorted-dolls (sort value-then-weight-sort dolls)] ;Otherwise, decide which ones to pack.          
       (loop [dolls-left sorted-dolls packed []] 
 	(if (empty? dolls-left)
 	  (println packed)
-	  (do (let [weight-left (- max-weight (reduce + (map :weight packed)))]
+	  (do (let [weight-left (- max-weight (acc-weights  packed))]
 	    ;If the next doll's weight is less than the remaining available weight,
 	    ;add it to the bag. Otherwise, skip to the next doll.
 	    (if (<= (:weight (first dolls-left)) weight-left) 	      
