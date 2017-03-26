@@ -1,7 +1,6 @@
 (ns doll-smuggler.core
   (:gen-class))
 
-
 (defn value-then-weight-sort
   "Returns the doll with the higher value. If values are the same, returns doll with lower weight."
   [dollA dollB]
@@ -12,19 +11,20 @@
 (defn pack-dolls
   "Find the optimal set of drug-packed porcelain dolls."
   [max-weight dolls]
-    
+
+  ;If the total weight of all dolls is less than the max-weight, pack all the dolls.  
   (if (<= (reduce + (map :weight (vec dolls))) max-weight)
     (println (vec dolls))
-    (do 
-      ;Sort the dolls
-      (let [sorted-dolls (sort value-then-weight-sort dolls)]          
-        (loop [dolls-left sorted-dolls packed []] 
-	  (if (empty? dolls-left)
-	    (println packed)
-	      (do (let [weight-left (- max-weight (reduce + (map :weight packed)))]
-		(if (<= (:weight (first dolls-left)) weight-left) 	      
-		  (recur (rest dolls-left) (conj packed (first dolls-left)))
-		  (recur (rest dolls-left) packed))))))))))
+    (do (let [sorted-dolls (sort value-then-weight-sort dolls)] ;Otherwise, decide which ones to pack.          
+      (loop [dolls-left sorted-dolls packed []] 
+	(if (empty? dolls-left)
+	  (println packed)
+	  (do (let [weight-left (- max-weight (reduce + (map :weight packed)))]
+	    ;If the next doll's weight is less than the remaining available weight,
+	    ;add it to the bag. Otherwise, skip to the next doll.
+	    (if (<= (:weight (first dolls-left)) weight-left) 	      
+	      (recur (rest dolls-left) (conj packed (first dolls-left)))
+	      (recur (rest dolls-left) packed))))))))))
 
 (defn -main
   "I don't do a whole lot ... yet."
@@ -52,5 +52,4 @@
 		{:name "sally" :weight 4 :value 50}
 		{:name "babe" :weight 30 :value 10}
 		{:name "babe" :weight 21 :value 3}})
-  (println "Hello, World!")
   (pack-dolls 400 dolls))
