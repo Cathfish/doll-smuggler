@@ -37,8 +37,8 @@ If doll-smuggling is your only forray into law-breaking, you might instead run:
 <br/> <b>(pack-dolls-and-print MAX-WEIGHT DOLLS)</b> <br/>
 which will run the pack-dolls function and will print the results directly to your terminal.
 
-To run the test suite from the command line:
-	1. cd to the doll-smuggler directory
+To run the test suite from the command line:<br/>
+	1. cd to the doll-smuggler directory <br/>
 	2. lein test
 
 ### Future features
@@ -50,9 +50,9 @@ In the next few updates look out for the stealthy function jedi-mind-tricks whic
 
 This is the first program I've ever written in Clojure. It's a really cool and powerful language, but it can be a tough one to wrap your head around if you've never done functional programming before (and maybe even if you have).Nevertheless, I recommend taking some time to learn the basics. The following resources were incredibly helpful for me during this project.
 
-https://kimh.github.io/clojure-by-example/#about
-https://clojuredocs.org/
-http://www.braveclojure.com/do-things/
+https://kimh.github.io/clojure-by-example/#about<br/>
+https://clojuredocs.org/<br/>
+http://www.braveclojure.com/do-things/<br/>
 
 Additionally this was a helpful resource for learning about the knapsack problem.
 https://en.wikipedia.org/wiki/Knapsack_problem
