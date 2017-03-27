@@ -41,7 +41,8 @@
   ;If the total weight of all dolls is less than the max-weight, pack all the dolls.  
   (if (should-pack-all max-weight dolls)
     (vec dolls)
-    (do (let [sorted-dolls (sort value-then-weight-sort dolls)] ;Otherwise, decide which ones to pack.          
+    (do (let [sorted-dolls (sort value-then-weight-sort dolls)]
+      ;Otherwise, decide which ones to pack.          
       (loop [dolls-left sorted-dolls packed []] 
 	(if (empty? dolls-left)
 	  packed
@@ -53,7 +54,8 @@
 	      (recur (rest dolls-left) packed))))))))))
 
 (defn pack-dolls-and-print
-  "A bonus function that will run pack-dolls and print the results directly to the terminal."  [max-weight dolls]
+  "A bonus function that will run pack-dolls and print the results directly to the terminal." 
+  [max-weight dolls]
   (let [packed (pack-dolls max-weight dolls)]
     (println "Packed dolls:\n")
     (doseq [i packed]
