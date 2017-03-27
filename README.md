@@ -9,32 +9,32 @@ A test suite is included to verify this solution.
 ## Installation
 
 The source code for this project is here:
-	https://github.com/Cathfish/doll-smuggler
+<br/>https://github.com/Cathfish/doll-smuggler<br/>
 Clone the whole repository or download just the src files as you see fit.
 
 Make sure the src/doll-smuggler directory (or a copy of it) finds it's way into the src/ directory of your project. For example if your project is called "my-project", your mp_project/src/ folder should contain a "my_project" directory and a "doll_smuggler" directory to be able to use the doll-smuggler program.
 
 To run the test suite, you'll need leiningen if you don't already have it. Find it here:
-        https://github.com/technomancy/leiningen
+       <br/> https://github.com/technomancy/leiningen
 
 ## Usage
 
 The doll-smuggler program should be included in your current project via:
-	(:require [doll-smuggler.core :as <ALIAS>])
-where <ALIAS> is replaced by an alias of your choice. You can of course choose not to use an alias by leaving off ":as <ALIAS>".
+<br/> (:require [doll-smuggler.core :as ALIAS])<br/>
+where ALIAS is replaced by an alias of your choice. You can of course choose not to use an alias by leaving off ":as ALIAS".
 
 If doll-smuggling is part of a larger ring of illicit activity, run:
-	(pack-dolls <MAX-WEIGHT> <DOLLS>)
-where <MAX-WEIGHT> is a positive integer denoting the maximum weight of the handbag, and <DOLLS> is a collection of the form:
-#{{:name <STRING1> :weight <POSITIVE_INT1> :value <POSITIVE_INT1>}
-  {:name <STRING2> :weight <POSITIVE_INT2> :value <POSITIVE_INT2>}
-  {:name <STRING3> :weight <POSITIVE_INT3> :value <POSITIVE_INT3>}
-  ...								 }
+<br/> (pack-dolls MAX-WEIGHT DOLLS) <br/>
+where MAX-WEIGHT is a positive integer denoting the maximum weight of the handbag, and DOLLS is a collection of the form:
+<br/>#{{:name STRING1 :weight POSITIVE_INT1 :value POSITIVE_INT1}
+<br/>  {:name STRING2 :weight POSITIVE_INT2 :value POSITIVE_INT2}
+<br/>  {:name STRING3 :weight POSITIVE_INT3 :value POSITIVE_INT3}
+<br/>  ...								 }
 
 The collection could alternatively be a vector of maps or list of maps. pack-dolls will return a collection containing the optimal set of drug-filled dolls to pack in the handbag, which you can use for other purposes in your program.
 
 If doll-smuggling is your only forray into law-breaking, you might instead run:
-	(pack-dolls-and-print <MAX-WEIGHT> <DOLLS>)
+<br/> (pack-dolls-and-print MAX-WEIGHT DOLLS)
 which will run the pack-dolls function and will print the results directly to your terminal.
 
 To run the test suite from the command line:
