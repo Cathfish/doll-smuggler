@@ -52,6 +52,12 @@
 	      (recur (rest dolls-left) (conj packed (first dolls-left)))
 	      (recur (rest dolls-left) packed))))))))))
 
-(defn -main
-  "I don't do a whole lot ... yet."
-  [& args]) 
+(defn pack-dolls-and-print
+  "A bonus function that will run pack-dolls and print the results directly to the terminal."  [max-weight dolls]
+  (let [packed (pack-dolls max-weight dolls)]
+    (println "Packed dolls:\n")
+    (doseq [i packed]
+      (println i))
+    (let [total-value (reduce + (map :value packed))]
+      (printf "Total Value: %d\n" total-value))
+    (printf "Total Weight: %d/%d\n" (acc-weights packed) max-weight))) 
