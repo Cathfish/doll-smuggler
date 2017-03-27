@@ -20,11 +20,11 @@ To run the test suite, you'll need leiningen if you don't already have it. Find 
 ## Usage
 
 The doll-smuggler program should be included in your current project via:
-<br/> (:require [doll-smuggler.core :as ALIAS])<br/>
+<br/><b> (:require [doll-smuggler.core :as ALIAS])</b><br/>
 where ALIAS is replaced by an alias of your choice. You can of course choose not to use an alias by leaving off ":as ALIAS".
 
 If doll-smuggling is part of a larger ring of illicit activity, run:
-<br/> (pack-dolls MAX-WEIGHT DOLLS) <br/>
+<br/><b> (pack-dolls MAX-WEIGHT DOLLS)</b> <br/>
 where MAX-WEIGHT is a positive integer denoting the maximum weight of the handbag, and DOLLS is a collection of the form:
 <br/>#{{:name STRING1 :weight POSITIVE_INT1 :value POSITIVE_INT1}
 <br/>  {:name STRING2 :weight POSITIVE_INT2 :value POSITIVE_INT2}
@@ -34,7 +34,7 @@ where MAX-WEIGHT is a positive integer denoting the maximum weight of the handba
 The collection could alternatively be a vector of maps or list of maps. pack-dolls will return a collection containing the optimal set of drug-filled dolls to pack in the handbag, which you can use for other purposes in your program.
 
 If doll-smuggling is your only forray into law-breaking, you might instead run:
-<br/> (pack-dolls-and-print MAX-WEIGHT DOLLS)
+<br/> <b>(pack-dolls-and-print MAX-WEIGHT DOLLS)</b> <br/>
 which will run the pack-dolls function and will print the results directly to your terminal.
 
 To run the test suite from the command line:
